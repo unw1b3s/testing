@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Content-Length: 85
+Content-Type: application/json
+X-Charles-Map-Local: /Users/levvolkov/Documents/ChatGPT/??? 04.01/testing/tools/charles/health.json
+Proxy-Connection: keep-alive
+

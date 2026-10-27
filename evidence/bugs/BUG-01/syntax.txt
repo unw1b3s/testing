@@ -1,0 +1,8 @@
+/Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/app/static/app.js:48
+
+
+
+SyntaxError: Unexpected end of input
+    at checkSyntax (node:internal/main/check_syntax:72:5)
+
+Node.js v24.18.0

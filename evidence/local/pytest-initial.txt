@@ -1,0 +1,1040 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.7, pytest-9.1.1, pluggy-1.7.0 -- /Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 24 items
+
+tests/test_api.py::test_protected_api PASSED                             [  4%]
+tests/test_api.py::test_api_title_boundaries[0-400] PASSED               [  8%]
+tests/test_api.py::test_api_title_boundaries[1-201] PASSED               [ 12%]
+tests/test_api.py::test_api_title_boundaries[79-201] PASSED              [ 16%]
+tests/test_api.py::test_api_title_boundaries[80-201] PASSED              [ 20%]
+tests/test_api.py::test_api_title_boundaries[81-400] PASSED              [ 25%]
+tests/test_api.py::test_sessions_are_isolated PASSED                     [ 29%]
+tests/test_regression.py::test_wrong_credentials[other@example.com-Study123!] FAILED [ 33%]
+tests/test_regression.py::test_wrong_credentials[student@example.com-Wrong123!] FAILED [ 37%]
+tests/test_regression.py::test_login_validation[-Study123!-email-valueMissing] PASSED [ 41%]
+tests/test_regression.py::test_login_validation[student@example.com--password-valueMissing] PASSED [ 45%]
+tests/test_regression.py::test_login_validation[not-email-Study123!-email-typeMismatch] PASSED [ 50%]
+tests/test_regression.py::test_login_validation[student@example.com-1234567-password-tooShort] PASSED [ 54%]
+tests/test_regression.py::test_title_boundaries[1] FAILED                [ 58%]
+tests/test_regression.py::test_title_boundaries[79] FAILED               [ 62%]
+tests/test_regression.py::test_title_boundaries[80] FAILED               [ 66%]
+tests/test_regression.py::test_spaces_title FAILED                       [ 70%]
+tests/test_regression.py::test_text_is_not_html FAILED                   [ 75%]
+tests/test_regression.py::test_frame_and_new_window PASSED               [ 79%]
+tests/test_smoke.py::test_open_login PASSED                              [ 83%]
+tests/test_smoke.py::test_login_and_logout FAILED                        [ 87%]
+tests/test_smoke.py::test_create_task FAILED                             [ 91%]
+tests/test_smoke.py::test_complete_and_delete FAILED                     [ 95%]
+tests/test_smoke.py::test_navigation PASSED                              [100%]
+
+=================================== FAILURES ===================================
+_____________ test_wrong_credentials[other@example.com-Study123!] ______________
+
+page = <tests.pages.planner.PlannerPage object at 0x107ae3620>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="0e35b9d528794e95d5b276c8cc9575ce")>
+email = 'other@example.com', password = 'Study123!'
+
+    @pytest.mark.parametrize('email,password', [('other@example.com', 'Study123!'), ('student@example.com', 'Wrong123!')])
+    def test_wrong_credentials(page, driver, email, password):
+        page.login(email, password)
+>       assert page.error() == 'Неверная почта или пароль'
+               ^^^^^^^^^^^^
+
+tests/test_regression.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:51: in error
+    return self.wait.until(lambda d: d.find_element(By.ID, 'login-error').text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="0e35b9d528794e95d5b276c8cc9575ce")>
+method = <function PlannerPage.error.<locals>.<lambda> at 0x107b18d50>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x0000000102ffb684 chromedriver + 3028612
+E       1   chromedriver                        0x000000010334dab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x00000001033843e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x00000001033330bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x00000001033b6834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x00000001033330bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x000000010337c458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x0000000102fca580 chromedriver + 2827648
+E       8   chromedriver                        0x0000000102fcd870 chromedriver + 2840688
+E       9   chromedriver                        0x0000000102fb41b0 chromedriver + 2736560
+E       10  chromedriver                        0x0000000102fce130 chromedriver + 2842928
+E       11  chromedriver                        0x0000000102fa7c04 chromedriver + 2685956
+E       12  chromedriver                        0x0000000102fe9fd8 chromedriver + 2957272
+E       13  chromedriver                        0x0000000102fea138 chromedriver + 2957624
+E       14  chromedriver                        0x0000000102ffb344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:12] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:12] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:12] "GET /favicon.ico HTTP/1.1" 404 -
+------------------------------ Captured log setup ------------------------------
+WARNING  selenium.webdriver.common.selenium_manager:selenium_manager.py:168 Error sending stats to Plausible: error sending request for url (https://plausible.io/api/event)
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:12] "GET /?email=other%40example.com&password=Study123%21 HTTP/1.1" 404 -
+____________ test_wrong_credentials[student@example.com-Wrong123!] _____________
+
+page = <tests.pages.planner.PlannerPage object at 0x107b374d0>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="6d778aa71ef8e506ac827d5ac2c69af2")>
+email = 'student@example.com', password = 'Wrong123!'
+
+    @pytest.mark.parametrize('email,password', [('other@example.com', 'Study123!'), ('student@example.com', 'Wrong123!')])
+    def test_wrong_credentials(page, driver, email, password):
+        page.login(email, password)
+>       assert page.error() == 'Неверная почта или пароль'
+               ^^^^^^^^^^^^
+
+tests/test_regression.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:51: in error
+    return self.wait.until(lambda d: d.find_element(By.ID, 'login-error').text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="6d778aa71ef8e506ac827d5ac2c69af2")>
+method = <function PlannerPage.error.<locals>.<lambda> at 0x107b65fe0>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010286b684 chromedriver + 3028612
+E       1   chromedriver                        0x0000000102bbdab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x0000000102bf43e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x0000000102ba30bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x0000000102c26834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x0000000102ba30bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x0000000102bec458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x000000010283a580 chromedriver + 2827648
+E       8   chromedriver                        0x000000010283d870 chromedriver + 2840688
+E       9   chromedriver                        0x00000001028241b0 chromedriver + 2736560
+E       10  chromedriver                        0x000000010283e130 chromedriver + 2842928
+E       11  chromedriver                        0x0000000102817c04 chromedriver + 2685956
+E       12  chromedriver                        0x0000000102859fd8 chromedriver + 2957272
+E       13  chromedriver                        0x000000010285a138 chromedriver + 2957624
+E       14  chromedriver                        0x000000010286b344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:21] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:21] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:21] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:21] "GET /?email=student%40example.com&password=Wrong123%21 HTTP/1.1" 404 -
+___________________________ test_title_boundaries[1] ___________________________
+
+page = <tests.pages.planner.PlannerPage object at 0x107b6f680>, length = 1
+
+    @pytest.mark.parametrize('length', [1, 79, 80])
+    def test_title_boundaries(page, length):
+        title = 'Я' * length
+>       page.login().ready().add(title)
+        ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_regression.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:33: in ready
+    self.wait.until(EC.visibility_of_element_located(self.PANEL))
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:112: in until
+    value = method(self._driver)
+            ^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/expected_conditions.py:188: in _predicate
+    return _element_if_visible(driver.find_element(*locator))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/expected_conditions.py:227: in _element_if_visible
+    return element if element.is_displayed() == visibility else False
+                      ^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/selenium/webdriver/remote/webelement.py:304: in is_displayed
+    return self.parent.execute_script(f"/* isDisplayed */return ({isDisplayed_js}).apply(null, arguments);", self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/selenium/webdriver/remote/webdriver.py:617: in execute_script
+    return self.execute(command, {"script": script, "args": converted_args})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.14/site-packages/selenium/webdriver/remote/webdriver.py:506: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x107b6fbd0>
+response = {'status': 500, 'value': '{"value":{"error":"unknown error","message":"unknown error: unhandled inspector error: {\\"c...000184099cfc _pthread_start + 132\\n26  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4\\n"}}'}
+
+    def check_response(self, response: dict[str, Any]) -> None:
+        """Check that a JSON response from the WebDriver does not have an error.
+    
+        Args:
+            response: The JSON response from the WebDriver server as a dictionary
+                object.
+    
+        Raises:
+            WebDriverException: If the response contains an error message.
+        """
+        status = response.get("status", None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen: str = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get("value", None)
+            if value_json and isinstance(value_json, str):
+                try:
+                    value = json.loads(value_json)
+                    if isinstance(value, dict):
+                        if len(value) == 1:
+                            value = value["value"]
+                        status = value.get("error", None)
+                        if not status:
+                            status = value.get("status", ErrorCode.UNKNOWN_ERROR)
+                            message = value.get("value") or value.get("message")
+                            if not isinstance(message, str):
+                                value = message
+                                message = message.get("message") if isinstance(message, dict) else None
+                        else:
+                            message = value.get("message", None)
+                except ValueError:
+                    pass
+    
+        exception_class: type[WebDriverException]
+        e = ErrorCode()
+        error_codes = [item for item in dir(e) if not item.startswith("__")]
+        for error_code in error_codes:
+            error_info = getattr(ErrorCode, error_code)
+            if isinstance(error_info, list) and status in error_info:
+                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)
+                break
+        else:
+            exception_class = WebDriverException
+    
+        if not value:
+            value = response["value"]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == "" and "message" in value:
+            message = value["message"]
+    
+        screen = None  # type: ignore[assignment]
+        if "screen" in value:
+            screen = value["screen"]
+    
+        stacktrace = None
+        st_value = value.get("stackTrace") or value.get("stacktrace")
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split("\n")
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.WebDriverException: Message: unknown error: unhandled inspector error: {"code":-32000,"message":"Node with given id does not belong to the document"}
+E         (Session info: chrome=156.0.8078.48)
+E       Stacktrace:
+E       0   chromedriver                        0x00000001032cb684 chromedriver + 3028612
+E       1   chromedriver                        0x000000010361dab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x0000000103611ec0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 108568
+E       3   chromedriver                        0x0000000103610f84 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 104668
+E       4   chromedriver                        0x00000001036113cc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 105764
+E       5   chromedriver                        0x0000000103629034 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 203148
+E       6   chromedriver                        0x000000010362acfc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 210516
+E       7   chromedriver                        0x000000010362a3cc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 208164
+E       8   chromedriver                        0x00000001036228fc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 176724
+E       9   chromedriver                        0x00000001036228fc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 176724
+E       10  chromedriver                        0x0000000103621aa4 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 173052
+E       11  chromedriver                        0x0000000103624068 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 182720
+E       12  chromedriver                        0x0000000103687060 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 588216
+E       13  chromedriver                        0x00000001036030bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       14  chromedriver                        0x0000000103686834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       15  chromedriver                        0x00000001036030bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       16  chromedriver                        0x000000010364c458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       17  chromedriver                        0x000000010329a580 chromedriver + 2827648
+E       18  chromedriver                        0x000000010329d870 chromedriver + 2840688
+E       19  chromedriver                        0x00000001032841b0 chromedriver + 2736560
+E       20  chromedriver                        0x000000010329e130 chromedriver + 2842928
+E       21  chromedriver                        0x0000000103277c04 chromedriver + 2685956
+E       22  chromedriver                        0x00000001032b9fd8 chromedriver + 2957272
+E       23  chromedriver                        0x00000001032ba138 chromedriver + 2957624
+E       24  chromedriver                        0x00000001032cb344 chromedriver + 3027780
+E       25  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       26  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py:232: WebDriverException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:33] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:33] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:33] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:33] "GET /?email=student%40example.com&password=Study123%21 HTTP/1.1" 404 -
+__________________________ test_title_boundaries[79] ___________________________
+
+page = <tests.pages.planner.PlannerPage object at 0x107bc8380>, length = 79
+
+    @pytest.mark.parametrize('length', [1, 79, 80])
+    def test_title_boundaries(page, length):
+        title = 'Я' * length
+>       page.login().ready().add(title)
+        ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_regression.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:33: in ready
+    self.wait.until(EC.visibility_of_element_located(self.PANEL))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="d121937252e1768f7f0503341db6cb07")>
+method = <function visibility_of_element_located.<locals>._predicate at 0x107b66090>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010466f684 chromedriver + 3028612
+E       1   chromedriver                        0x00000001049c1ab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x00000001049f83e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x00000001049a70bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x0000000104a2a834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x00000001049a70bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x00000001049f0458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x000000010463e580 chromedriver + 2827648
+E       8   chromedriver                        0x0000000104641870 chromedriver + 2840688
+E       9   chromedriver                        0x00000001046281b0 chromedriver + 2736560
+E       10  chromedriver                        0x0000000104642130 chromedriver + 2842928
+E       11  chromedriver                        0x000000010461bc04 chromedriver + 2685956
+E       12  chromedriver                        0x000000010465dfd8 chromedriver + 2957272
+E       13  chromedriver                        0x000000010465e138 chromedriver + 2957624
+E       14  chromedriver                        0x000000010466f344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:34] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:34] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:34] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:34] "GET /?email=student%40example.com&password=Study123%21 HTTP/1.1" 404 -
+__________________________ test_title_boundaries[80] ___________________________
+
+page = <tests.pages.planner.PlannerPage object at 0x107a6b650>, length = 80
+
+    @pytest.mark.parametrize('length', [1, 79, 80])
+    def test_title_boundaries(page, length):
+        title = 'Я' * length
+>       page.login().ready().add(title)
+        ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_regression.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:33: in ready
+    self.wait.until(EC.visibility_of_element_located(self.PANEL))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="0e4b1401b0112b183047572d1fad552d")>
+method = <function visibility_of_element_located.<locals>._predicate at 0x107b661f0>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010288f684 chromedriver + 3028612
+E       1   chromedriver                        0x0000000102be1ab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x0000000102c183e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x0000000102bc70bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x0000000102c4a834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x0000000102bc70bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x0000000102c10458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x000000010285e580 chromedriver + 2827648
+E       8   chromedriver                        0x0000000102861870 chromedriver + 2840688
+E       9   chromedriver                        0x00000001028481b0 chromedriver + 2736560
+E       10  chromedriver                        0x0000000102862130 chromedriver + 2842928
+E       11  chromedriver                        0x000000010283bc04 chromedriver + 2685956
+E       12  chromedriver                        0x000000010287dfd8 chromedriver + 2957272
+E       13  chromedriver                        0x000000010287e138 chromedriver + 2957624
+E       14  chromedriver                        0x000000010288f344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:43] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:43] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:43] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:43] "GET /?email=student%40example.com&password=Study123%21 HTTP/1.1" 404 -
+______________________________ test_spaces_title _______________________________
+
+page = <tests.pages.planner.PlannerPage object at 0x107bf8550>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="ddf80ec458ef84d15d40c51913ddf623")>
+
+    def test_spaces_title(page, driver):
+>       page.login().ready()
+
+tests/test_regression.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:33: in ready
+    self.wait.until(EC.visibility_of_element_located(self.PANEL))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="ddf80ec458ef84d15d40c51913ddf623")>
+method = <function visibility_of_element_located.<locals>._predicate at 0x107b654e0>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x0000000102c9f684 chromedriver + 3028612
+E       1   chromedriver                        0x0000000102ff1ab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x00000001030283e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x0000000102fd70bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x000000010305a834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x0000000102fd70bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x0000000103020458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x0000000102c6e580 chromedriver + 2827648
+E       8   chromedriver                        0x0000000102c71870 chromedriver + 2840688
+E       9   chromedriver                        0x0000000102c581b0 chromedriver + 2736560
+E       10  chromedriver                        0x0000000102c72130 chromedriver + 2842928
+E       11  chromedriver                        0x0000000102c4bc04 chromedriver + 2685956
+E       12  chromedriver                        0x0000000102c8dfd8 chromedriver + 2957272
+E       13  chromedriver                        0x0000000102c8e138 chromedriver + 2957624
+E       14  chromedriver                        0x0000000102c9f344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:51] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:51] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:25:52] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:25:52] "GET /?email=student%40example.com&password=Study123%21 HTTP/1.1" 404 -
+____________________________ test_text_is_not_html _____________________________
+
+page = <tests.pages.planner.PlannerPage object at 0x107b323f0>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="3096ce0945d102fb80cbe46002996b53")>
+
+    def test_text_is_not_html(page, driver):
+        text = '<b>Конспект</b>'
+>       page.login().ready().add(text)
+        ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_regression.py:42: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:33: in ready
+    self.wait.until(EC.visibility_of_element_located(self.PANEL))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="3096ce0945d102fb80cbe46002996b53")>
+method = <function visibility_of_element_located.<locals>._predicate at 0x107b7c5c0>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x0000000100b27684 chromedriver + 3028612
+E       1   chromedriver                        0x0000000100e79ab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x0000000100eb03e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x0000000100e5f0bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x0000000100ee2834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x0000000100e5f0bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x0000000100ea8458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x0000000100af6580 chromedriver + 2827648
+E       8   chromedriver                        0x0000000100af9870 chromedriver + 2840688
+E       9   chromedriver                        0x0000000100ae01b0 chromedriver + 2736560
+E       10  chromedriver                        0x0000000100afa130 chromedriver + 2842928
+E       11  chromedriver                        0x0000000100ad3c04 chromedriver + 2685956
+E       12  chromedriver                        0x0000000100b15fd8 chromedriver + 2957272
+E       13  chromedriver                        0x0000000100b16138 chromedriver + 2957624
+E       14  chromedriver                        0x0000000100b27344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:26:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:01] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:01] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:01] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:26:01] "GET /?email=student%40example.com&password=Study123%21 HTTP/1.1" 404 -
+____________________________ test_login_and_logout _____________________________
+
+page = <tests.pages.planner.PlannerPage object at 0x107be4830>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="e4b13a9475c21a8dd855105dfbbd4ba4")>
+
+    def test_login_and_logout(page, driver):
+>       page.login().ready()
+
+tests/test_smoke.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:33: in ready
+    self.wait.until(EC.visibility_of_element_located(self.PANEL))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="e4b13a9475c21a8dd855105dfbbd4ba4")>
+method = <function visibility_of_element_located.<locals>._predicate at 0x107b7d0c0>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x0000000101097684 chromedriver + 3028612
+E       1   chromedriver                        0x00000001013e9ab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x00000001014203e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x00000001013cf0bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x0000000101452834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x00000001013cf0bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x0000000101418458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x0000000101066580 chromedriver + 2827648
+E       8   chromedriver                        0x0000000101069870 chromedriver + 2840688
+E       9   chromedriver                        0x00000001010501b0 chromedriver + 2736560
+E       10  chromedriver                        0x000000010106a130 chromedriver + 2842928
+E       11  chromedriver                        0x0000000101043c04 chromedriver + 2685956
+E       12  chromedriver                        0x0000000101085fd8 chromedriver + 2957272
+E       13  chromedriver                        0x0000000101086138 chromedriver + 2957624
+E       14  chromedriver                        0x0000000101097344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:26:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:11] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:11] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:11] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:26:11] "GET /?email=student%40example.com&password=Study123%21 HTTP/1.1" 404 -
+_______________________________ test_create_task _______________________________
+
+page = <tests.pages.planner.PlannerPage object at 0x107c801f0>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="ff70e9640afea9a856e8b33c9ba2a22c")>
+
+    def test_create_task(page, driver):
+>       page.login().ready().add('Подготовить отчёт', 'Высокий')
+        ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_smoke.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:33: in ready
+    self.wait.until(EC.visibility_of_element_located(self.PANEL))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="ff70e9640afea9a856e8b33c9ba2a22c")>
+method = <function visibility_of_element_located.<locals>._predicate at 0x107b7d430>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010284b684 chromedriver + 3028612
+E       1   chromedriver                        0x0000000102b9dab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x0000000102bd43e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x0000000102b830bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x0000000102c06834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x0000000102b830bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x0000000102bcc458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x000000010281a580 chromedriver + 2827648
+E       8   chromedriver                        0x000000010281d870 chromedriver + 2840688
+E       9   chromedriver                        0x00000001028041b0 chromedriver + 2736560
+E       10  chromedriver                        0x000000010281e130 chromedriver + 2842928
+E       11  chromedriver                        0x00000001027f7c04 chromedriver + 2685956
+E       12  chromedriver                        0x0000000102839fd8 chromedriver + 2957272
+E       13  chromedriver                        0x000000010283a138 chromedriver + 2957624
+E       14  chromedriver                        0x000000010284b344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:26:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:20] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:20] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:20] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:26:20] "GET /?email=student%40example.com&password=Study123%21 HTTP/1.1" 404 -
+___________________________ test_complete_and_delete ___________________________
+
+page = <tests.pages.planner.PlannerPage object at 0x107a43350>
+driver = <selenium.webdriver.chrome.webdriver.WebDriver (session="62ca49736a15aff754299b2120095487")>
+
+    def test_complete_and_delete(page, driver):
+>       page.login().ready().add('Прочитать конспект')
+        ^^^^^^^^^^^^^^^^^^^^
+
+tests/test_smoke.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/pages/planner.py:33: in ready
+    self.wait.until(EC.visibility_of_element_located(self.PANEL))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <selenium.webdriver.support.wait.WebDriverWait (session="62ca49736a15aff754299b2120095487")>
+method = <function visibility_of_element_located.<locals>._predicate at 0x107b7da60>
+message = ''
+
+    def until(self, method: Callable[[D], Literal[False] | T], message: str = "") -> T:
+        """Wait until the method returns a value that is not False.
+    
+        Calls the method provided with the driver as an argument until the
+        return value does not evaluate to ``False``.
+    
+        Args:
+            method: A callable object that takes a WebDriver instance as an
+                argument.
+            message: Optional message for TimeoutException.
+    
+        Returns:
+            The result of the last call to `method`.
+    
+        Raises:
+            TimeoutException: If 'method' does not return a truthy value within
+                the WebDriverWait object's timeout.
+    
+        Example:
+            >>> from selenium.webdriver.common.by import By
+            >>> from selenium.webdriver.support.wait import WebDriverWait
+            >>> from selenium.webdriver.support import expected_conditions as EC
+            >>>
+            >>> # Wait until an element is visible on the page
+            >>> wait = WebDriverWait(driver, 10)
+            >>> element = wait.until(EC.visibility_of_element_located((By.ID, "exampleId")))
+            >>> print(element.text)
+        """
+        screen = None
+        stacktrace = None
+    
+        end_time = time.monotonic() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, "screen", None)
+                stacktrace = getattr(exc, "stacktrace", None)
+            if time.monotonic() > end_time:
+                break
+            time.sleep(self._poll)
+>       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message: 
+E       Stacktrace:
+E       0   chromedriver                        0x000000010435f684 chromedriver + 3028612
+E       1   chromedriver                        0x00000001046b1ab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+E       2   chromedriver                        0x00000001046e83e0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 380216
+E       3   chromedriver                        0x00000001046970bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       4   chromedriver                        0x000000010471a834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+E       5   chromedriver                        0x00000001046970bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+E       6   chromedriver                        0x00000001046e0458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+E       7   chromedriver                        0x000000010432e580 chromedriver + 2827648
+E       8   chromedriver                        0x0000000104331870 chromedriver + 2840688
+E       9   chromedriver                        0x00000001043181b0 chromedriver + 2736560
+E       10  chromedriver                        0x0000000104332130 chromedriver + 2842928
+E       11  chromedriver                        0x000000010430bc04 chromedriver + 2685956
+E       12  chromedriver                        0x000000010434dfd8 chromedriver + 2957272
+E       13  chromedriver                        0x000000010434e138 chromedriver + 2957624
+E       14  chromedriver                        0x000000010435f344 chromedriver + 3027780
+E       15  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+E       16  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+
+.venv/lib/python3.14/site-packages/selenium/webdriver/support/wait.py:121: TimeoutException
+---------------------------- Captured stderr setup -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:26:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:29] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:29] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [27/Oct/2026 21:26:29] "GET /favicon.ico HTTP/1.1" 404 -
+----------------------------- Captured stderr call -----------------------------
+127.0.0.1 - - [27/Oct/2026 21:26:29] "GET /?email=student%40example.com&password=Study123%21 HTTP/1.1" 404 -
+- generated xml file: /Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/artifacts/results.xml -
+=========================== short test summary info ============================
+FAILED tests/test_regression.py::test_wrong_credentials[other@example.com-Study123!]
+FAILED tests/test_regression.py::test_wrong_credentials[student@example.com-Wrong123!]
+FAILED tests/test_regression.py::test_title_boundaries[1] - selenium.common.e...
+FAILED tests/test_regression.py::test_title_boundaries[79] - selenium.common....
+FAILED tests/test_regression.py::test_title_boundaries[80] - selenium.common....
+FAILED tests/test_regression.py::test_spaces_title - selenium.common.exceptio...
+FAILED tests/test_regression.py::test_text_is_not_html - selenium.common.exce...
+FAILED tests/test_smoke.py::test_login_and_logout - selenium.common.exception...
+FAILED tests/test_smoke.py::test_create_task - selenium.common.exceptions.Tim...
+FAILED tests/test_smoke.py::test_complete_and_delete - selenium.common.except...
+================== 10 failed, 14 passed in 107.64s (0:01:47) ===================

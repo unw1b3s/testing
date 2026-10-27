@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/scripts/check_proxy.py", line 23, in <module>
+    page = PlannerPage(driver, 'http://127.0.0.1:8000').open()
+  File "/Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/tests/pages/planner.py", line 20, in open
+    self.driver.get(self.base_url)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/.venv/lib/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 526, in get
+    self.execute(Command.GET, {"url": url})
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/.venv/lib/python3.14/site-packages/selenium/webdriver/remote/webdriver.py", line 506, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/.venv/lib/python3.14/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: net::ERR_PROXY_CONNECTION_FAILED
+  (Session info: chrome=156.0.8078.48)
+Stacktrace:
+0   chromedriver                        0x00000001030ff684 chromedriver + 3028612
+1   chromedriver                        0x0000000103451ab0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 156680
+2   chromedriver                        0x000000010344fb8c __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 148708
+3   chromedriver                        0x0000000103446984 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 111324
+4   chromedriver                        0x0000000103447b64 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 115900
+5   chromedriver                        0x0000000103446cc4 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 112156
+6   chromedriver                        0x0000000103446838 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 110992
+7   chromedriver                        0x00000001034465d0 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 110376
+8   chromedriver                        0x0000000103444f14 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 104556
+9   chromedriver                        0x00000001034452a4 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 105468
+10  chromedriver                        0x0000000103454674 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 167884
+11  chromedriver                        0x00000001034badf4 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 587596
+12  chromedriver                        0x00000001034370bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+13  chromedriver                        0x00000001034ba834 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 586124
+14  chromedriver                        0x00000001034370bc __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 47636
+15  chromedriver                        0x0000000103480458 __crubit_thunk_f2134de3d97b69f__uRNvYINtNtCshWKCNEi6jdz_u5alloc3vec3VecNtNtCs1ixaWZjKKKx_u16web_upackage_urust5types18SectionOffsetEntryENtNtNtCs7g9ANUVeamz_u4core3ops4drop4Drop4dropBD_u + 347568
+16  chromedriver                        0x00000001030ce580 chromedriver + 2827648
+17  chromedriver                        0x00000001030d1870 chromedriver + 2840688
+18  chromedriver                        0x00000001030b81b0 chromedriver + 2736560
+19  chromedriver                        0x00000001030d2130 chromedriver + 2842928
+20  chromedriver                        0x00000001030abc04 chromedriver + 2685956
+21  chromedriver                        0x00000001030edfd8 chromedriver + 2957272
+22  chromedriver                        0x00000001030ee138 chromedriver + 2957624
+23  chromedriver                        0x00000001030ff344 chromedriver + 3027780
+24  libsystem_pthread.dylib             0x0000000184099cfc _pthread_start + 132
+25  libsystem_pthread.dylib             0x0000000184094ce8 thread_start + 4
+

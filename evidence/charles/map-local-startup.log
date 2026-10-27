@@ -1,0 +1,15 @@
+2026-10-27 21:47:49.938 INFO     com.charlesproxy.CharlesContext                       Java version: OpenJDK 64-Bit Server VM 25.0.3+9-20260508 (XK72 OpenJDK)
+2026-10-27 21:47:49.950 INFO     com.charlesproxy.CharlesContext                       Loading Configuration
+2026-10-27 21:47:49.950 INFO     com.charlesproxy.CharlesContext                       Version 5.2.2
+2026-10-27 21:47:49.950 INFO     com.charlesproxy.CharlesContext                       Loading Settings
+2026-10-27 21:47:49.952 INFO     com.charlesproxy.ConfigurationManager                 Loading: /Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/.tools/charles.config
+2026-10-27 21:47:50.148 INFO     com.charlesproxy.CharlesContext                       Loading Tools
+Using Charles confirms your acceptance of the Charles End User License Agreement
+https://www.charlesproxy.com/eula
+Charles is shareware. If you continue using Charles you must pay the shareware fee.
+Charles will wait for 10 seconds before starting...
+2026-10-27 21:48:00.292 INFO     com.charlesproxy.CharlesContext                       Configuring Access Control List
+2026-10-27 21:48:00.294 INFO     com.charlesproxy.CharlesContext                       Starting Proxy Server
+2026-10-27 21:48:00.310 INFO     com.charlesproxy.CharlesContext                       Starting Tools
+2026-10-27 21:48:00.312 INFO     com.charlesproxy.CharlesContext                       Configuring Proxies
+2026-10-27 21:48:00.313 INFO     com.charlesproxy.CharlesContext                       Ready

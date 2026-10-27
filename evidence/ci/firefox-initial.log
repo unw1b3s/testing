@@ -1,0 +1,584 @@
+﻿2026-10-27T18:39:35.1394730Z Current runner version: '2.338.0'
+2026-10-27T18:39:35.1422962Z ##[group]Runner Image Provisioner
+2026-10-27T18:39:35.1423952Z Hosted Compute Agent
+2026-10-27T18:39:35.1424656Z Version: 20261021.618
+2026-10-27T18:39:35.1425332Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-27T18:39:35.1426118Z Build Date: 2026-10-21T00:45:21Z
+2026-10-27T18:39:35.1426862Z Worker ID: {53247f22-3d8d-4cba-ae89-184817c8cb9e}
+2026-10-27T18:39:35.1427582Z Region: eastus
+2026-10-27T18:39:35.1428193Z Cloud: Azure
+2026-10-27T18:39:35.1428736Z ##[endgroup]
+2026-10-27T18:39:35.1430280Z ##[group]Operating System
+2026-10-27T18:39:35.1431115Z Ubuntu
+2026-10-27T18:39:35.1431657Z 24.04.5
+2026-10-27T18:39:35.1432403Z LTS
+2026-10-27T18:39:35.1433003Z ##[endgroup]
+2026-10-27T18:39:35.1433544Z ##[group]Runner Image
+2026-10-27T18:39:35.1434261Z Image: ubuntu-24.04
+2026-10-27T18:39:35.1434831Z Version: 20261025.353.1
+2026-10-27T18:39:35.1436547Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261025.353/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-27T18:39:35.1438169Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261025.353
+2026-10-27T18:39:35.1439203Z ##[endgroup]
+2026-10-27T18:39:35.1440393Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T18:39:35.1442774Z Contents: read
+2026-10-27T18:39:35.1443425Z Metadata: read
+2026-10-27T18:39:35.1444129Z ##[endgroup]
+2026-10-27T18:39:35.1446575Z Secret source: Actions
+2026-10-27T18:39:35.1447593Z Cache mode: write
+2026-10-27T18:39:35.1448545Z Prepare workflow directory
+2026-10-27T18:39:35.1981315Z Prepare all required actions
+2026-10-27T18:39:35.2033493Z Getting action download info
+2026-10-27T18:39:35.4018958Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T18:39:35.5059682Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-27T18:39:35.5854662Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-27T18:39:35.7964067Z Complete job name: tests (firefox)
+2026-10-27T18:39:35.8817287Z ##[group]Run actions/checkout@v4
+2026-10-27T18:39:35.8818176Z with:
+2026-10-27T18:39:35.8818627Z   repository: unw1b3s/testing
+2026-10-27T18:39:35.8822813Z   token: ***
+2026-10-27T18:39:35.8823269Z   ssh-strict: true
+2026-10-27T18:39:35.8823713Z   ssh-user: git
+2026-10-27T18:39:35.8824164Z   persist-credentials: true
+2026-10-27T18:39:35.8824651Z   clean: true
+2026-10-27T18:39:35.8825102Z   sparse-checkout-cone-mode: true
+2026-10-27T18:39:35.8825629Z   fetch-depth: 1
+2026-10-27T18:39:35.8826066Z   fetch-tags: false
+2026-10-27T18:39:35.8826507Z   show-progress: true
+2026-10-27T18:39:35.8826966Z   lfs: false
+2026-10-27T18:39:35.8827381Z   submodules: false
+2026-10-27T18:39:35.8827822Z   set-safe-directory: true
+2026-10-27T18:39:35.8828328Z   allow-unsafe-pr-checkout: false
+2026-10-27T18:39:35.8829088Z env:
+2026-10-27T18:39:35.8829495Z   BROWSER: firefox
+2026-10-27T18:39:35.8829942Z   ARTIFACT_DIR: artifacts
+2026-10-27T18:39:35.8830442Z ##[endgroup]
+2026-10-27T18:39:36.1862190Z Syncing repository: unw1b3s/testing
+2026-10-27T18:39:36.1865751Z ##[group]Getting Git version info
+2026-10-27T18:39:36.1866593Z Working directory is '/home/runner/work/testing/testing'
+2026-10-27T18:39:36.1867770Z [command]/usr/bin/git version
+2026-10-27T18:39:36.1992869Z git version 2.56.0
+2026-10-27T18:39:36.2019197Z ##[endgroup]
+2026-10-27T18:39:36.2053007Z Temporarily overriding HOME='/home/runner/work/_temp/006613e8-428a-46d5-9a6e-2a2d65caf6c1' before making global git config changes
+2026-10-27T18:39:36.2091004Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T18:39:36.2099079Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/testing/testing
+2026-10-27T18:39:36.2128858Z Deleting the contents of '/home/runner/work/testing/testing'
+2026-10-27T18:39:36.2136466Z ##[group]Initializing the repository
+2026-10-27T18:39:36.2143522Z [command]/usr/bin/git init /home/runner/work/testing/testing
+2026-10-27T18:39:36.2280232Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-27T18:39:36.2285160Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-27T18:39:36.2287908Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-27T18:39:36.2290756Z hint: call:
+2026-10-27T18:39:36.2292685Z hint:
+2026-10-27T18:39:36.2295092Z hint: 	git config --global init.defaultBranch <name>
+2026-10-27T18:39:36.2297195Z hint:
+2026-10-27T18:39:36.2299550Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-27T18:39:36.2302556Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-27T18:39:36.2305375Z hint:
+2026-10-27T18:39:36.2307056Z hint: 	git branch -m <name>
+2026-10-27T18:39:36.2309611Z hint:
+2026-10-27T18:39:36.2312623Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-27T18:39:36.2316971Z Initialized empty Git repository in /home/runner/work/testing/testing/.git/
+2026-10-27T18:39:36.2326411Z [command]/usr/bin/git remote add origin https://github.com/unw1b3s/testing
+2026-10-27T18:39:36.2403653Z ##[endgroup]
+2026-10-27T18:39:36.2405535Z ##[group]Disabling automatic garbage collection
+2026-10-27T18:39:36.2407803Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-27T18:39:36.2461288Z ##[endgroup]
+2026-10-27T18:39:36.2462915Z ##[group]Setting up auth
+2026-10-27T18:39:36.2465331Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T18:39:36.2525664Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T18:39:36.2995155Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T18:39:36.3041480Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T18:39:36.3293272Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T18:39:36.3340277Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T18:39:36.3586544Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-27T18:39:36.3636795Z ##[endgroup]
+2026-10-27T18:39:36.3638265Z ##[group]Fetching the repository
+2026-10-27T18:39:36.3649978Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +56ded71f152fe163d535a399372c7031adfb9131:refs/remotes/origin/main
+2026-10-27T18:39:36.6033940Z From https://github.com/unw1b3s/testing
+2026-10-27T18:39:36.6036011Z  * [new ref]         56ded71f152fe163d535a399372c7031adfb9131 -> origin/main
+2026-10-27T18:39:36.6041047Z ##[endgroup]
+2026-10-27T18:39:36.6042945Z ##[group]Determining the checkout info
+2026-10-27T18:39:36.6044767Z ##[endgroup]
+2026-10-27T18:39:36.6047670Z [command]/usr/bin/git sparse-checkout disable
+2026-10-27T18:39:36.6111740Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-27T18:39:36.6155097Z ##[group]Checking out the ref
+2026-10-27T18:39:36.6159068Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-27T18:39:36.6241035Z Switched to a new branch 'main'
+2026-10-27T18:39:36.6248208Z branch 'main' set up to track 'origin/main'.
+2026-10-27T18:39:36.6255033Z ##[endgroup]
+2026-10-27T18:39:36.6327187Z [command]/usr/bin/git log -1 --format=%H
+2026-10-27T18:39:36.6362488Z 56ded71f152fe163d535a399372c7031adfb9131
+2026-10-27T18:39:36.6757208Z ##[group]Run actions/setup-python@v5
+2026-10-27T18:39:36.6758486Z with:
+2026-10-27T18:39:36.6759374Z   python-version: 3.12
+2026-10-27T18:39:36.6760410Z   check-latest: false
+2026-10-27T18:39:36.6771424Z   token: ***
+2026-10-27T18:39:36.6772593Z   update-environment: true
+2026-10-27T18:39:36.6773746Z   allow-prereleases: false
+2026-10-27T18:39:36.6774845Z   freethreaded: false
+2026-10-27T18:39:36.6775811Z env:
+2026-10-27T18:39:36.6776632Z   BROWSER: firefox
+2026-10-27T18:39:36.6777583Z   ARTIFACT_DIR: artifacts
+2026-10-27T18:39:36.6778620Z ##[endgroup]
+2026-10-27T18:39:36.8298023Z ##[group]Installed versions
+2026-10-27T18:39:36.8394619Z (node:2371) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T18:39:36.8399205Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T18:39:36.8402469Z Successfully set up CPython (3.12.15)
+2026-10-27T18:39:36.8405443Z ##[endgroup]
+2026-10-27T18:39:36.8689383Z ##[group]Run pip install -r requirements.txt
+2026-10-27T18:39:36.8691770Z [36;1mpip install -r requirements.txt[0m
+2026-10-27T18:39:36.8743877Z shell: /usr/bin/bash -e {0}
+2026-10-27T18:39:36.8745711Z env:
+2026-10-27T18:39:36.8746910Z   BROWSER: firefox
+2026-10-27T18:39:36.8747897Z   ARTIFACT_DIR: artifacts
+2026-10-27T18:39:36.8749365Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:39:36.8751298Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-27T18:39:36.8753520Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:39:36.8755245Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:39:36.8756998Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:39:36.8759109Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-27T18:39:36.8761477Z ##[endgroup]
+2026-10-27T18:39:37.7833136Z Collecting selenium==4.51.0 (from -r requirements.txt (line 1))
+2026-10-27T18:39:37.8353896Z   Downloading selenium-4.51.0-py3-none-any.whl.metadata (7.4 kB)
+2026-10-27T18:39:37.8716405Z Collecting pytest==9.1.1 (from -r requirements.txt (line 2))
+2026-10-27T18:39:37.8761328Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-27T18:39:37.9092471Z Collecting certifi>=2026.2.25 (from selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:37.9137494Z   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+2026-10-27T18:39:37.9338880Z Collecting trio<1.0,>=0.31.0 (from selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:37.9378029Z   Downloading trio-0.34.0-py3-none-any.whl.metadata (8.5 kB)
+2026-10-27T18:39:37.9581351Z Collecting trio-websocket<1.0,>=0.12.2 (from selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:37.9622998Z   Downloading trio_websocket-0.12.2-py3-none-any.whl.metadata (5.1 kB)
+2026-10-27T18:39:37.9868513Z Collecting typing_extensions<5.0,>=4.15.0 (from selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:37.9908250Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-27T18:39:38.0193729Z Collecting urllib3<3.0,>=2.6.3 (from urllib3[socks]<3.0,>=2.6.3->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.0248303Z   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+2026-10-27T18:39:38.0500398Z Collecting websocket-client<2.0,>=1.8.0 (from selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.0542119Z   Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+2026-10-27T18:39:38.0731365Z Collecting iniconfig>=1.0.1 (from pytest==9.1.1->-r requirements.txt (line 2))
+2026-10-27T18:39:38.0797935Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-10-27T18:39:38.1038940Z Collecting packaging>=22 (from pytest==9.1.1->-r requirements.txt (line 2))
+2026-10-27T18:39:38.1083336Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-10-27T18:39:38.1274438Z Collecting pluggy<2,>=1.5 (from pytest==9.1.1->-r requirements.txt (line 2))
+2026-10-27T18:39:38.1462807Z   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+2026-10-27T18:39:38.1704603Z Collecting pygments>=2.7.2 (from pytest==9.1.1->-r requirements.txt (line 2))
+2026-10-27T18:39:38.1752475Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-27T18:39:38.1951059Z Collecting attrs>=23.2.0 (from trio<1.0,>=0.31.0->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.1993267Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-10-27T18:39:38.2183177Z Collecting sortedcontainers (from trio<1.0,>=0.31.0->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.2220996Z   Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+2026-10-27T18:39:38.2430140Z Collecting idna (from trio<1.0,>=0.31.0->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.2554841Z   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+2026-10-27T18:39:38.2725722Z Collecting outcome (from trio<1.0,>=0.31.0->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.2770010Z   Downloading outcome-1.3.0.post0-py2.py3-none-any.whl.metadata (2.6 kB)
+2026-10-27T18:39:38.2933029Z Collecting sniffio>=1.3.0 (from trio<1.0,>=0.31.0->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.2987508Z   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-10-27T18:39:38.3211802Z Collecting wsproto>=0.14 (from trio-websocket<1.0,>=0.12.2->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.3254800Z   Downloading wsproto-1.3.2-py3-none-any.whl.metadata (5.2 kB)
+2026-10-27T18:39:38.3486689Z Collecting pysocks!=1.5.7,<2.0,>=1.5.6 (from urllib3[socks]<3.0,>=2.6.3->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.3522850Z   Downloading PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+2026-10-27T18:39:38.3864442Z Collecting h11<1,>=0.16.0 (from wsproto>=0.14->trio-websocket<1.0,>=0.12.2->selenium==4.51.0->-r requirements.txt (line 1))
+2026-10-27T18:39:38.3903587Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-10-27T18:39:38.3998498Z Downloading selenium-4.51.0-py3-none-any.whl (11.8 MB)
+2026-10-27T18:39:38.4511977Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.8/11.8 MB 257.0 MB/s  0:00:00
+2026-10-27T18:39:38.4686416Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-10-27T18:39:38.4785393Z Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+2026-10-27T18:39:38.4847031Z Downloading trio-0.34.0-py3-none-any.whl (511 kB)
+2026-10-27T18:39:38.4914246Z Downloading trio_websocket-0.12.2-py3-none-any.whl (21 kB)
+2026-10-27T18:39:38.4974923Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-27T18:39:38.5028962Z Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+2026-10-27T18:39:38.5120950Z Downloading PySocks-1.7.1-py3-none-any.whl (16 kB)
+2026-10-27T18:39:38.5211167Z Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+2026-10-27T18:39:38.5311115Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-10-27T18:39:38.5476210Z Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+2026-10-27T18:39:38.5540018Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-10-27T18:39:38.5603260Z Downloading outcome-1.3.0.post0-py2.py3-none-any.whl (10 kB)
+2026-10-27T18:39:38.5659477Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+2026-10-27T18:39:38.5719659Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-10-27T18:39:38.5792686Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 210.7 MB/s  0:00:00
+2026-10-27T18:39:38.5834811Z Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+2026-10-27T18:39:38.5900243Z Downloading wsproto-1.3.2-py3-none-any.whl (24 kB)
+2026-10-27T18:39:38.5991210Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2026-10-27T18:39:38.6059824Z Downloading idna-3.20-py3-none-any.whl (69 kB)
+2026-10-27T18:39:38.6153428Z Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+2026-10-27T18:39:38.7403417Z Installing collected packages: sortedcontainers, websocket-client, urllib3, typing_extensions, sniffio, pysocks, pygments, pluggy, packaging, iniconfig, idna, h11, certifi, attrs, wsproto, pytest, outcome, trio, trio-websocket, selenium
+2026-10-27T18:39:41.7319899Z 
+2026-10-27T18:39:41.7346731Z Successfully installed attrs-26.1.0 certifi-2026.10.23 h11-0.16.0 idna-3.20 iniconfig-2.3.1 outcome-1.3.0.post0 packaging-26.3 pluggy-1.7.0 pygments-2.21.0 pysocks-1.7.1 pytest-9.1.1 selenium-4.51.0 sniffio-1.3.1 sortedcontainers-2.4.0 trio-0.34.0 trio-websocket-0.12.2 typing_extensions-4.16.0 urllib3-2.8.0 websocket-client-1.9.2 wsproto-1.3.2
+2026-10-27T18:39:41.8056391Z ##[group]Run python -m pytest -v --junitxml=artifacts/results.xml
+2026-10-27T18:39:41.8056933Z [36;1mpython -m pytest -v --junitxml=artifacts/results.xml[0m
+2026-10-27T18:39:41.8078624Z shell: /usr/bin/bash -e {0}
+2026-10-27T18:39:41.8078874Z env:
+2026-10-27T18:39:41.8079066Z   BROWSER: firefox
+2026-10-27T18:39:41.8079280Z   ARTIFACT_DIR: artifacts
+2026-10-27T18:39:41.8079579Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:39:41.8080035Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-27T18:39:41.8080479Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:39:41.8080882Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:39:41.8081272Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:39:41.8081673Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-27T18:39:41.8082001Z ##[endgroup]
+2026-10-27T18:39:42.2866365Z ============================= test session starts ==============================
+2026-10-27T18:39:42.2867914Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0 -- /opt/hostedtoolcache/Python/3.12.15/x64/bin/python
+2026-10-27T18:39:42.2868945Z cachedir: .pytest_cache
+2026-10-27T18:39:42.2869517Z rootdir: /home/runner/work/testing/testing
+2026-10-27T18:39:42.2870057Z configfile: pytest.ini
+2026-10-27T18:39:42.2870623Z testpaths: tests
+2026-10-27T18:39:42.3261960Z collecting ... collected 29 items
+2026-10-27T18:39:42.3262698Z 
+2026-10-27T18:39:42.3559361Z tests/test_api.py::test_protected_api PASSED                             [  3%]
+2026-10-27T18:39:42.3780969Z tests/test_api.py::test_api_title_boundaries[0-400] PASSED               [  6%]
+2026-10-27T18:39:42.4017654Z tests/test_api.py::test_api_title_boundaries[1-201] PASSED               [ 10%]
+2026-10-27T18:39:42.4230285Z tests/test_api.py::test_api_title_boundaries[79-201] PASSED              [ 13%]
+2026-10-27T18:39:42.4439685Z tests/test_api.py::test_api_title_boundaries[80-201] PASSED              [ 17%]
+2026-10-27T18:39:42.4652183Z tests/test_api.py::test_api_title_boundaries[81-400] PASSED              [ 20%]
+2026-10-27T18:39:42.5093234Z tests/test_api.py::test_sessions_are_isolated PASSED                     [ 24%]
+2026-10-27T18:39:56.0239925Z tests/test_layout.py::test_long_title_layout[320-568] FAILED             [ 27%]
+2026-10-27T18:39:59.7812146Z tests/test_layout.py::test_long_title_layout[375-812] FAILED             [ 31%]
+2026-10-27T18:40:03.5441286Z tests/test_layout.py::test_long_title_layout[768-1024] FAILED            [ 34%]
+2026-10-27T18:40:07.3922704Z tests/test_layout.py::test_long_title_layout[1280-720] FAILED            [ 37%]
+2026-10-27T18:40:11.3471535Z tests/test_layout.py::test_long_title_layout[1920-1080] FAILED           [ 41%]
+2026-10-27T18:40:14.9235299Z tests/test_regression.py::test_wrong_credentials[other@example.com-Study123!] PASSED [ 44%]
+2026-10-27T18:40:18.5223820Z tests/test_regression.py::test_wrong_credentials[student@example.com-Wrong123!] PASSED [ 48%]
+2026-10-27T18:40:21.9593892Z tests/test_regression.py::test_login_validation[-Study123!-email-valueMissing] PASSED [ 51%]
+2026-10-27T18:40:25.0799273Z tests/test_regression.py::test_login_validation[student@example.com--password-valueMissing] PASSED [ 55%]
+2026-10-27T18:40:28.7289530Z tests/test_regression.py::test_login_validation[not-email-Study123!-email-typeMismatch] PASSED [ 58%]
+2026-10-27T18:40:32.0239599Z tests/test_regression.py::test_login_validation[student@example.com-1234567-password-tooShort] PASSED [ 62%]
+2026-10-27T18:40:35.8219344Z tests/test_regression.py::test_title_boundaries[1] PASSED                [ 65%]
+2026-10-27T18:40:39.8193036Z tests/test_regression.py::test_title_boundaries[79] PASSED               [ 68%]
+2026-10-27T18:40:43.4763585Z tests/test_regression.py::test_title_boundaries[80] PASSED               [ 72%]
+2026-10-27T18:40:46.8745148Z tests/test_regression.py::test_spaces_title PASSED                       [ 75%]
+2026-10-27T18:40:50.7301195Z tests/test_regression.py::test_text_is_not_html PASSED                   [ 79%]
+2026-10-27T18:40:54.3808920Z tests/test_regression.py::test_frame_and_new_window PASSED               [ 82%]
+2026-10-27T18:40:57.3981896Z tests/test_smoke.py::test_open_login PASSED                              [ 86%]
+2026-10-27T18:41:00.8168995Z tests/test_smoke.py::test_login_and_logout PASSED                        [ 89%]
+2026-10-27T18:41:04.8065188Z tests/test_smoke.py::test_create_task PASSED                             [ 93%]
+2026-10-27T18:41:08.9535905Z tests/test_smoke.py::test_complete_and_delete PASSED                     [ 96%]
+2026-10-27T18:41:12.7964762Z tests/test_smoke.py::test_navigation PASSED                              [100%]
+2026-10-27T18:41:12.7965371Z 
+2026-10-27T18:41:12.7965625Z =================================== FAILURES ===================================
+2026-10-27T18:41:12.7966237Z _______________________ test_long_title_layout[320-568] ________________________
+2026-10-27T18:41:12.7966608Z 
+2026-10-27T18:41:12.7966873Z page = <tests.pages.planner.PlannerPage object at 0x7f6040c7d070>
+2026-10-27T18:41:12.7967679Z driver = <selenium.webdriver.firefox.webdriver.WebDriver (session="64b82bb9-cacb-4127-980f-442e4c417fa5")>
+2026-10-27T18:41:12.7968375Z width = 320, height = 568
+2026-10-27T18:41:12.7968567Z 
+2026-10-27T18:41:12.7968934Z     @pytest.mark.parametrize('width,height', [(320, 568), (375, 812), (768, 1024), (1280, 720), (1920, 1080)])
+2026-10-27T18:41:12.7969626Z     def test_long_title_layout(page, driver, width, height):
+2026-10-27T18:41:12.7970304Z         page.login().ready().add('Я' * 80)
+2026-10-27T18:41:12.7970696Z         if hasattr(driver, 'execute_cdp_cmd'):
+2026-10-27T18:41:12.7971588Z >           driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': width < 600})
+2026-10-27T18:41:12.7972661Z 
+2026-10-27T18:41:12.7972839Z tests/test_layout.py:8: 
+2026-10-27T18:41:12.7973399Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-10-27T18:41:12.7973906Z 
+2026-10-27T18:41:12.7974533Z self = <selenium.webdriver.firefox.webdriver.WebDriver (session="64b82bb9-cacb-4127-980f-442e4c417fa5")>
+2026-10-27T18:41:12.7975620Z cmd = 'Emulation.setDeviceMetricsOverride'
+2026-10-27T18:41:12.7976431Z cmd_args = {'width': 320, 'height': 568, 'deviceScaleFactor': 1, 'mobile': True}
+2026-10-27T18:41:12.7977061Z 
+2026-10-27T18:41:12.7977402Z     def execute_cdp_cmd(self, cmd: str, cmd_args: dict):
+2026-10-27T18:41:12.7978256Z         """Execute Chrome Devtools Protocol command and get returned result.
+2026-10-27T18:41:12.7979003Z     
+2026-10-27T18:41:12.7979718Z         The command and command args should follow chrome devtools protocol domains/commands:
+2026-10-27T18:41:12.7980805Z           - https://chromedevtools.github.io/devtools-protocol/
+2026-10-27T18:41:12.7981523Z     
+2026-10-27T18:41:12.7981869Z         Args:
+2026-10-27T18:41:12.7982490Z             cmd: Command name.
+2026-10-27T18:41:12.7983190Z             cmd_args: Command args. Empty dict {} if there is no command args.
+2026-10-27T18:41:12.7983833Z     
+2026-10-27T18:41:12.7984054Z         Returns:
+2026-10-27T18:41:12.7984402Z             A dict, empty dict {} if there is no result to return. To
+2026-10-27T18:41:12.7984922Z             getResponseBody: {'base64Encoded': False, 'body': 'response body
+2026-10-27T18:41:12.7985296Z             string'}
+2026-10-27T18:41:12.7985496Z     
+2026-10-27T18:41:12.7985665Z         Example:
+2026-10-27T18:41:12.7986013Z             `driver.execute_cdp_cmd("Network.getResponseBody", {"requestId": requestId})`
+2026-10-27T18:41:12.7986424Z         """
+2026-10-27T18:41:12.7986932Z         if self.caps["browserName"].lower() == "firefox":
+2026-10-27T18:41:12.7987446Z >           raise RuntimeError("CDP support for Firefox has been removed. Please switch to WebDriver BiDi.")
+2026-10-27T18:41:12.7988092Z E           RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.7988607Z 
+2026-10-27T18:41:12.7989000Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py:466: RuntimeError
+2026-10-27T18:41:12.7989667Z ---------------------------- Captured stderr setup -----------------------------
+2026-10-27T18:41:12.7990078Z 127.0.0.1 - - [27/Oct/2026 18:39:54] "GET / HTTP/1.1" 200 -
+2026-10-27T18:41:12.7990451Z 127.0.0.1 - - [27/Oct/2026 18:39:54] "GET /style.css HTTP/1.1" 200 -
+2026-10-27T18:41:12.7990832Z 127.0.0.1 - - [27/Oct/2026 18:39:54] "GET /app.js HTTP/1.1" 200 -
+2026-10-27T18:41:12.7991393Z 127.0.0.1 - - [27/Oct/2026 18:39:54] "GET /api/tasks HTTP/1.1" 401 -
+2026-10-27T18:41:12.7992080Z 127.0.0.1 - - [27/Oct/2026 18:39:54] "GET /favicon.ico HTTP/1.1" 404 -
+2026-10-27T18:41:12.7992912Z ----------------------------- Captured stderr call -----------------------------
+2026-10-27T18:41:12.7993344Z 127.0.0.1 - - [27/Oct/2026 18:39:55] "POST /api/login HTTP/1.1" 200 -
+2026-10-27T18:41:12.7993746Z 127.0.0.1 - - [27/Oct/2026 18:39:55] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.7994142Z 127.0.0.1 - - [27/Oct/2026 18:39:55] "GET /api/health HTTP/1.1" 200 -
+2026-10-27T18:41:12.7994530Z 127.0.0.1 - - [27/Oct/2026 18:39:55] "POST /api/tasks HTTP/1.1" 201 -
+2026-10-27T18:41:12.7994906Z 127.0.0.1 - - [27/Oct/2026 18:39:55] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.7995317Z _______________________ test_long_title_layout[375-812] ________________________
+2026-10-27T18:41:12.7995595Z 
+2026-10-27T18:41:12.7995775Z page = <tests.pages.planner.PlannerPage object at 0x7f6040c81040>
+2026-10-27T18:41:12.7996376Z driver = <selenium.webdriver.firefox.webdriver.WebDriver (session="088c7aa8-fecd-4ed9-8b9e-349c819d9a02")>
+2026-10-27T18:41:12.7996899Z width = 375, height = 812
+2026-10-27T18:41:12.7997044Z 
+2026-10-27T18:41:12.7997319Z     @pytest.mark.parametrize('width,height', [(320, 568), (375, 812), (768, 1024), (1280, 720), (1920, 1080)])
+2026-10-27T18:41:12.7997833Z     def test_long_title_layout(page, driver, width, height):
+2026-10-27T18:41:12.7998270Z         page.login().ready().add('Я' * 80)
+2026-10-27T18:41:12.7998567Z         if hasattr(driver, 'execute_cdp_cmd'):
+2026-10-27T18:41:12.7999218Z >           driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': width < 600})
+2026-10-27T18:41:12.7999763Z 
+2026-10-27T18:41:12.7999856Z tests/test_layout.py:8: 
+2026-10-27T18:41:12.8000139Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-10-27T18:41:12.8000380Z 
+2026-10-27T18:41:12.8000701Z self = <selenium.webdriver.firefox.webdriver.WebDriver (session="088c7aa8-fecd-4ed9-8b9e-349c819d9a02")>
+2026-10-27T18:41:12.8001247Z cmd = 'Emulation.setDeviceMetricsOverride'
+2026-10-27T18:41:12.8001635Z cmd_args = {'width': 375, 'height': 812, 'deviceScaleFactor': 1, 'mobile': True}
+2026-10-27T18:41:12.8001924Z 
+2026-10-27T18:41:12.8002057Z     def execute_cdp_cmd(self, cmd: str, cmd_args: dict):
+2026-10-27T18:41:12.8002734Z         """Execute Chrome Devtools Protocol command and get returned result.
+2026-10-27T18:41:12.8003142Z     
+2026-10-27T18:41:12.8003486Z         The command and command args should follow chrome devtools protocol domains/commands:
+2026-10-27T18:41:12.8003994Z           - https://chromedevtools.github.io/devtools-protocol/
+2026-10-27T18:41:12.8004327Z     
+2026-10-27T18:41:12.8004498Z         Args:
+2026-10-27T18:41:12.8004701Z             cmd: Command name.
+2026-10-27T18:41:12.8005042Z             cmd_args: Command args. Empty dict {} if there is no command args.
+2026-10-27T18:41:12.8005389Z     
+2026-10-27T18:41:12.8005563Z         Returns:
+2026-10-27T18:41:12.8006003Z             A dict, empty dict {} if there is no result to return. To
+2026-10-27T18:41:12.8006439Z             getResponseBody: {'base64Encoded': False, 'body': 'response body
+2026-10-27T18:41:12.8006795Z             string'}
+2026-10-27T18:41:12.8006989Z     
+2026-10-27T18:41:12.8007162Z         Example:
+2026-10-27T18:41:12.8007719Z             `driver.execute_cdp_cmd("Network.getResponseBody", {"requestId": requestId})`
+2026-10-27T18:41:12.8008129Z         """
+2026-10-27T18:41:12.8008374Z         if self.caps["browserName"].lower() == "firefox":
+2026-10-27T18:41:12.8008883Z >           raise RuntimeError("CDP support for Firefox has been removed. Please switch to WebDriver BiDi.")
+2026-10-27T18:41:12.8009525Z E           RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8009892Z 
+2026-10-27T18:41:12.8010284Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py:466: RuntimeError
+2026-10-27T18:41:12.8010959Z ---------------------------- Captured stderr setup -----------------------------
+2026-10-27T18:41:12.8011367Z 127.0.0.1 - - [27/Oct/2026 18:39:58] "GET / HTTP/1.1" 200 -
+2026-10-27T18:41:12.8011737Z 127.0.0.1 - - [27/Oct/2026 18:39:58] "GET /style.css HTTP/1.1" 200 -
+2026-10-27T18:41:12.8012127Z 127.0.0.1 - - [27/Oct/2026 18:39:58] "GET /app.js HTTP/1.1" 200 -
+2026-10-27T18:41:12.8012777Z 127.0.0.1 - - [27/Oct/2026 18:39:58] "GET /api/tasks HTTP/1.1" 401 -
+2026-10-27T18:41:12.8013164Z 127.0.0.1 - - [27/Oct/2026 18:39:58] "GET /favicon.ico HTTP/1.1" 404 -
+2026-10-27T18:41:12.8013589Z ----------------------------- Captured stderr call -----------------------------
+2026-10-27T18:41:12.8014006Z 127.0.0.1 - - [27/Oct/2026 18:39:58] "POST /api/login HTTP/1.1" 200 -
+2026-10-27T18:41:12.8014392Z 127.0.0.1 - - [27/Oct/2026 18:39:58] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.8014767Z 127.0.0.1 - - [27/Oct/2026 18:39:58] "GET /api/health HTTP/1.1" 200 -
+2026-10-27T18:41:12.8015151Z 127.0.0.1 - - [27/Oct/2026 18:39:59] "POST /api/tasks HTTP/1.1" 201 -
+2026-10-27T18:41:12.8015526Z 127.0.0.1 - - [27/Oct/2026 18:39:59] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.8015932Z _______________________ test_long_title_layout[768-1024] _______________________
+2026-10-27T18:41:12.8016205Z 
+2026-10-27T18:41:12.8016390Z page = <tests.pages.planner.PlannerPage object at 0x7f6040c80c50>
+2026-10-27T18:41:12.8016991Z driver = <selenium.webdriver.firefox.webdriver.WebDriver (session="1339ece7-ef0e-4774-b026-7359d3ea302b")>
+2026-10-27T18:41:12.8017502Z width = 768, height = 1024
+2026-10-27T18:41:12.8017646Z 
+2026-10-27T18:41:12.8017924Z     @pytest.mark.parametrize('width,height', [(320, 568), (375, 812), (768, 1024), (1280, 720), (1920, 1080)])
+2026-10-27T18:41:12.8018440Z     def test_long_title_layout(page, driver, width, height):
+2026-10-27T18:41:12.8018850Z         page.login().ready().add('Я' * 80)
+2026-10-27T18:41:12.8019144Z         if hasattr(driver, 'execute_cdp_cmd'):
+2026-10-27T18:41:12.8019803Z >           driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': width < 600})
+2026-10-27T18:41:12.8020352Z 
+2026-10-27T18:41:12.8020448Z tests/test_layout.py:8: 
+2026-10-27T18:41:12.8020726Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-10-27T18:41:12.8020963Z 
+2026-10-27T18:41:12.8021283Z self = <selenium.webdriver.firefox.webdriver.WebDriver (session="1339ece7-ef0e-4774-b026-7359d3ea302b")>
+2026-10-27T18:41:12.8021813Z cmd = 'Emulation.setDeviceMetricsOverride'
+2026-10-27T18:41:12.8022423Z cmd_args = {'width': 768, 'height': 1024, 'deviceScaleFactor': 1, 'mobile': False}
+2026-10-27T18:41:12.8022741Z 
+2026-10-27T18:41:12.8022893Z     def execute_cdp_cmd(self, cmd: str, cmd_args: dict):
+2026-10-27T18:41:12.8023303Z         """Execute Chrome Devtools Protocol command and get returned result.
+2026-10-27T18:41:12.8023661Z     
+2026-10-27T18:41:12.8024004Z         The command and command args should follow chrome devtools protocol domains/commands:
+2026-10-27T18:41:12.8024660Z           - https://chromedevtools.github.io/devtools-protocol/
+2026-10-27T18:41:12.8024989Z     
+2026-10-27T18:41:12.8025160Z         Args:
+2026-10-27T18:41:12.8025361Z             cmd: Command name.
+2026-10-27T18:41:12.8025806Z             cmd_args: Command args. Empty dict {} if there is no command args.
+2026-10-27T18:41:12.8026157Z     
+2026-10-27T18:41:12.8026328Z         Returns:
+2026-10-27T18:41:12.8026595Z             A dict, empty dict {} if there is no result to return. To
+2026-10-27T18:41:12.8027029Z             getResponseBody: {'base64Encoded': False, 'body': 'response body
+2026-10-27T18:41:12.8027379Z             string'}
+2026-10-27T18:41:12.8027574Z     
+2026-10-27T18:41:12.8027740Z         Example:
+2026-10-27T18:41:12.8028081Z             `driver.execute_cdp_cmd("Network.getResponseBody", {"requestId": requestId})`
+2026-10-27T18:41:12.8028478Z         """
+2026-10-27T18:41:12.8028712Z         if self.caps["browserName"].lower() == "firefox":
+2026-10-27T18:41:12.8029217Z >           raise RuntimeError("CDP support for Firefox has been removed. Please switch to WebDriver BiDi.")
+2026-10-27T18:41:12.8029855Z E           RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8030215Z 
+2026-10-27T18:41:12.8135795Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py:466: RuntimeError
+2026-10-27T18:41:12.8137238Z ---------------------------- Captured stderr setup -----------------------------
+2026-10-27T18:41:12.8137767Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "GET / HTTP/1.1" 200 -
+2026-10-27T18:41:12.8138248Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "GET /style.css HTTP/1.1" 200 -
+2026-10-27T18:41:12.8138724Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "GET /app.js HTTP/1.1" 200 -
+2026-10-27T18:41:12.8139190Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "GET /api/tasks HTTP/1.1" 401 -
+2026-10-27T18:41:12.8139674Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "GET /favicon.ico HTTP/1.1" 404 -
+2026-10-27T18:41:12.8140198Z ----------------------------- Captured stderr call -----------------------------
+2026-10-27T18:41:12.8140718Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "POST /api/login HTTP/1.1" 200 -
+2026-10-27T18:41:12.8141192Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.8141670Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "GET /api/health HTTP/1.1" 200 -
+2026-10-27T18:41:12.8142161Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "POST /api/tasks HTTP/1.1" 201 -
+2026-10-27T18:41:12.8143052Z 127.0.0.1 - - [27/Oct/2026 18:40:02] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.8143564Z _______________________ test_long_title_layout[1280-720] _______________________
+2026-10-27T18:41:12.8143906Z 
+2026-10-27T18:41:12.8144141Z page = <tests.pages.planner.PlannerPage object at 0x7f6040c821e0>
+2026-10-27T18:41:12.8144838Z driver = <selenium.webdriver.firefox.webdriver.WebDriver (session="463f286d-f42c-47e2-b9ac-efa2eea431d3")>
+2026-10-27T18:41:12.8145362Z width = 1280, height = 720
+2026-10-27T18:41:12.8145509Z 
+2026-10-27T18:41:12.8145787Z     @pytest.mark.parametrize('width,height', [(320, 568), (375, 812), (768, 1024), (1280, 720), (1920, 1080)])
+2026-10-27T18:41:12.8146308Z     def test_long_title_layout(page, driver, width, height):
+2026-10-27T18:41:12.8146767Z         page.login().ready().add('Я' * 80)
+2026-10-27T18:41:12.8147063Z         if hasattr(driver, 'execute_cdp_cmd'):
+2026-10-27T18:41:12.8147719Z >           driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': width < 600})
+2026-10-27T18:41:12.8148264Z 
+2026-10-27T18:41:12.8148360Z tests/test_layout.py:8: 
+2026-10-27T18:41:12.8148645Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-10-27T18:41:12.8148884Z 
+2026-10-27T18:41:12.8149210Z self = <selenium.webdriver.firefox.webdriver.WebDriver (session="463f286d-f42c-47e2-b9ac-efa2eea431d3")>
+2026-10-27T18:41:12.8149965Z cmd = 'Emulation.setDeviceMetricsOverride'
+2026-10-27T18:41:12.8150369Z cmd_args = {'width': 1280, 'height': 720, 'deviceScaleFactor': 1, 'mobile': False}
+2026-10-27T18:41:12.8150669Z 
+2026-10-27T18:41:12.8150803Z     def execute_cdp_cmd(self, cmd: str, cmd_args: dict):
+2026-10-27T18:41:12.8151334Z         """Execute Chrome Devtools Protocol command and get returned result.
+2026-10-27T18:41:12.8151684Z     
+2026-10-27T18:41:12.8152017Z         The command and command args should follow chrome devtools protocol domains/commands:
+2026-10-27T18:41:12.8152835Z           - https://chromedevtools.github.io/devtools-protocol/
+2026-10-27T18:41:12.8153175Z     
+2026-10-27T18:41:12.8153341Z         Args:
+2026-10-27T18:41:12.8153544Z             cmd: Command name.
+2026-10-27T18:41:12.8153888Z             cmd_args: Command args. Empty dict {} if there is no command args.
+2026-10-27T18:41:12.8154225Z     
+2026-10-27T18:41:12.8154395Z         Returns:
+2026-10-27T18:41:12.8154666Z             A dict, empty dict {} if there is no result to return. To
+2026-10-27T18:41:12.8155103Z             getResponseBody: {'base64Encoded': False, 'body': 'response body
+2026-10-27T18:41:12.8155455Z             string'}
+2026-10-27T18:41:12.8155648Z     
+2026-10-27T18:41:12.8155850Z         Example:
+2026-10-27T18:41:12.8156197Z             `driver.execute_cdp_cmd("Network.getResponseBody", {"requestId": requestId})`
+2026-10-27T18:41:12.8156588Z         """
+2026-10-27T18:41:12.8156829Z         if self.caps["browserName"].lower() == "firefox":
+2026-10-27T18:41:12.8157330Z >           raise RuntimeError("CDP support for Firefox has been removed. Please switch to WebDriver BiDi.")
+2026-10-27T18:41:12.8157966Z E           RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8158321Z 
+2026-10-27T18:41:12.8158711Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py:466: RuntimeError
+2026-10-27T18:41:12.8159365Z ---------------------------- Captured stderr setup -----------------------------
+2026-10-27T18:41:12.8159772Z 127.0.0.1 - - [27/Oct/2026 18:40:05] "GET / HTTP/1.1" 200 -
+2026-10-27T18:41:12.8160137Z 127.0.0.1 - - [27/Oct/2026 18:40:05] "GET /style.css HTTP/1.1" 200 -
+2026-10-27T18:41:12.8160515Z 127.0.0.1 - - [27/Oct/2026 18:40:05] "GET /app.js HTTP/1.1" 200 -
+2026-10-27T18:41:12.8160888Z 127.0.0.1 - - [27/Oct/2026 18:40:06] "GET /api/tasks HTTP/1.1" 401 -
+2026-10-27T18:41:12.8161274Z 127.0.0.1 - - [27/Oct/2026 18:40:06] "GET /favicon.ico HTTP/1.1" 404 -
+2026-10-27T18:41:12.8161683Z ----------------------------- Captured stderr call -----------------------------
+2026-10-27T18:41:12.8162095Z 127.0.0.1 - - [27/Oct/2026 18:40:06] "POST /api/login HTTP/1.1" 200 -
+2026-10-27T18:41:12.8162611Z 127.0.0.1 - - [27/Oct/2026 18:40:06] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.8162982Z 127.0.0.1 - - [27/Oct/2026 18:40:06] "GET /api/health HTTP/1.1" 200 -
+2026-10-27T18:41:12.8163357Z 127.0.0.1 - - [27/Oct/2026 18:40:06] "POST /api/tasks HTTP/1.1" 201 -
+2026-10-27T18:41:12.8163768Z 127.0.0.1 - - [27/Oct/2026 18:40:06] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.8164169Z ______________________ test_long_title_layout[1920-1080] _______________________
+2026-10-27T18:41:12.8164446Z 
+2026-10-27T18:41:12.8164623Z page = <tests.pages.planner.PlannerPage object at 0x7f6040cc86e0>
+2026-10-27T18:41:12.8165222Z driver = <selenium.webdriver.firefox.webdriver.WebDriver (session="f23591ee-af80-40e5-a198-695fc684b7d0")>
+2026-10-27T18:41:12.8165734Z width = 1920, height = 1080
+2026-10-27T18:41:12.8165889Z 
+2026-10-27T18:41:12.8166171Z     @pytest.mark.parametrize('width,height', [(320, 568), (375, 812), (768, 1024), (1280, 720), (1920, 1080)])
+2026-10-27T18:41:12.8166685Z     def test_long_title_layout(page, driver, width, height):
+2026-10-27T18:41:12.8167085Z         page.login().ready().add('Я' * 80)
+2026-10-27T18:41:12.8167385Z         if hasattr(driver, 'execute_cdp_cmd'):
+2026-10-27T18:41:12.8168031Z >           driver.execute_cdp_cmd('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': width < 600})
+2026-10-27T18:41:12.8168734Z 
+2026-10-27T18:41:12.8168828Z tests/test_layout.py:8: 
+2026-10-27T18:41:12.8169106Z _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+2026-10-27T18:41:12.8169337Z 
+2026-10-27T18:41:12.8169766Z self = <selenium.webdriver.firefox.webdriver.WebDriver (session="f23591ee-af80-40e5-a198-695fc684b7d0")>
+2026-10-27T18:41:12.8170301Z cmd = 'Emulation.setDeviceMetricsOverride'
+2026-10-27T18:41:12.8170701Z cmd_args = {'width': 1920, 'height': 1080, 'deviceScaleFactor': 1, 'mobile': False}
+2026-10-27T18:41:12.8171001Z 
+2026-10-27T18:41:12.8171134Z     def execute_cdp_cmd(self, cmd: str, cmd_args: dict):
+2026-10-27T18:41:12.8171537Z         """Execute Chrome Devtools Protocol command and get returned result.
+2026-10-27T18:41:12.8171885Z     
+2026-10-27T18:41:12.8172368Z         The command and command args should follow chrome devtools protocol domains/commands:
+2026-10-27T18:41:12.8172880Z           - https://chromedevtools.github.io/devtools-protocol/
+2026-10-27T18:41:12.8173197Z     
+2026-10-27T18:41:12.8173363Z         Args:
+2026-10-27T18:41:12.8173560Z             cmd: Command name.
+2026-10-27T18:41:12.8173892Z             cmd_args: Command args. Empty dict {} if there is no command args.
+2026-10-27T18:41:12.8174238Z     
+2026-10-27T18:41:12.8174405Z         Returns:
+2026-10-27T18:41:12.8174664Z             A dict, empty dict {} if there is no result to return. To
+2026-10-27T18:41:12.8175085Z             getResponseBody: {'base64Encoded': False, 'body': 'response body
+2026-10-27T18:41:12.8175444Z             string'}
+2026-10-27T18:41:12.8175634Z     
+2026-10-27T18:41:12.8175800Z         Example:
+2026-10-27T18:41:12.8176139Z             `driver.execute_cdp_cmd("Network.getResponseBody", {"requestId": requestId})`
+2026-10-27T18:41:12.8176533Z         """
+2026-10-27T18:41:12.8176769Z         if self.caps["browserName"].lower() == "firefox":
+2026-10-27T18:41:12.8177276Z >           raise RuntimeError("CDP support for Firefox has been removed. Please switch to WebDriver BiDi.")
+2026-10-27T18:41:12.8177910Z E           RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8178272Z 
+2026-10-27T18:41:12.8178664Z /opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py:466: RuntimeError
+2026-10-27T18:41:12.8179314Z ---------------------------- Captured stderr setup -----------------------------
+2026-10-27T18:41:12.8179712Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "GET / HTTP/1.1" 200 -
+2026-10-27T18:41:12.8180082Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "GET /style.css HTTP/1.1" 200 -
+2026-10-27T18:41:12.8180457Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "GET /app.js HTTP/1.1" 200 -
+2026-10-27T18:41:12.8180830Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "GET /api/tasks HTTP/1.1" 401 -
+2026-10-27T18:41:12.8181213Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "GET /favicon.ico HTTP/1.1" 404 -
+2026-10-27T18:41:12.8181639Z ----------------------------- Captured stderr call -----------------------------
+2026-10-27T18:41:12.8182063Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "POST /api/login HTTP/1.1" 200 -
+2026-10-27T18:41:12.8182754Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.8183146Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "GET /api/health HTTP/1.1" 200 -
+2026-10-27T18:41:12.8183525Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "POST /api/tasks HTTP/1.1" 201 -
+2026-10-27T18:41:12.8183897Z 127.0.0.1 - - [27/Oct/2026 18:40:10] "GET /api/tasks HTTP/1.1" 200 -
+2026-10-27T18:41:12.8184346Z - generated xml file: /home/runner/work/testing/testing/artifacts/results.xml --
+2026-10-27T18:41:12.8184809Z =========================== short test summary info ============================
+2026-10-27T18:41:12.8185606Z FAILED tests/test_layout.py::test_long_title_layout[320-568] - RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8186746Z FAILED tests/test_layout.py::test_long_title_layout[375-812] - RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8187718Z FAILED tests/test_layout.py::test_long_title_layout[768-1024] - RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8188797Z FAILED tests/test_layout.py::test_long_title_layout[1280-720] - RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8189781Z FAILED tests/test_layout.py::test_long_title_layout[1920-1080] - RuntimeError: CDP support for Firefox has been removed. Please switch to WebDriver BiDi.
+2026-10-27T18:41:12.8190501Z =================== 5 failed, 24 passed in 90.51s (0:01:30) ====================
+2026-10-27T18:41:12.8484625Z ##[error]Process completed with exit code 1.
+2026-10-27T18:41:12.8605364Z ##[group]Run actions/upload-artifact@v4
+2026-10-27T18:41:12.8605666Z with:
+2026-10-27T18:41:12.8605874Z   name: results-firefox
+2026-10-27T18:41:12.8606101Z   path: artifacts/
+2026-10-27T18:41:12.8606312Z   if-no-files-found: warn
+2026-10-27T18:41:12.8606546Z   compression-level: 6
+2026-10-27T18:41:12.8606761Z   overwrite: false
+2026-10-27T18:41:12.8606980Z   include-hidden-files: false
+2026-10-27T18:41:12.8607213Z env:
+2026-10-27T18:41:12.8607391Z   BROWSER: firefox
+2026-10-27T18:41:12.8607591Z   ARTIFACT_DIR: artifacts
+2026-10-27T18:41:12.8607881Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:41:12.8608311Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-27T18:41:12.8608737Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:41:12.8609115Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:41:12.8609505Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T18:41:12.8609931Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-27T18:41:12.8610256Z ##[endgroup]
+2026-10-27T18:41:13.0397162Z (node:9576) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T18:41:13.0398525Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T18:41:13.0495109Z With the provided path, there will be 12 files uploaded
+2026-10-27T18:41:13.0499772Z Artifact name is valid!
+2026-10-27T18:41:13.0500461Z Root directory input is valid!
+2026-10-27T18:41:13.2726740Z Beginning upload of artifact content to blob storage
+2026-10-27T18:41:13.3273749Z (node:9576) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-27T18:41:13.3600462Z Uploaded bytes 234345
+2026-10-27T18:41:13.3749029Z Finished uploading artifact content to blob storage!
+2026-10-27T18:41:13.3750617Z SHA256 digest of uploaded artifact zip is 4fecc109e78f95ff2fb11207081f31bf2f65b4c530524b682dbbe49e5559a001
+2026-10-27T18:41:13.3752653Z Finalizing artifact upload
+2026-10-27T18:41:13.8132940Z Artifact results-firefox.zip successfully finalized. Artifact ID 12762106325
+2026-10-27T18:41:13.8134326Z Artifact results-firefox has been successfully uploaded! Final size is 234345 bytes. Artifact ID is 12762106325
+2026-10-27T18:41:13.8139931Z Artifact download URL: https://github.com/unw1b3s/testing/actions/runs/40562010031/artifacts/12762106325
+2026-10-27T18:41:13.8380635Z Post job cleanup.
+2026-10-27T18:41:13.9254273Z [command]/usr/bin/git version
+2026-10-27T18:41:13.9301187Z git version 2.56.0
+2026-10-27T18:41:13.9378835Z Temporarily overriding HOME='/home/runner/work/_temp/710c7cf8-b68d-428b-864d-f375d3b7b85a' before making global git config changes
+2026-10-27T18:41:13.9379883Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T18:41:13.9384890Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/testing/testing
+2026-10-27T18:41:13.9428414Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T18:41:13.9469431Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T18:41:13.9756987Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T18:41:13.9791424Z http.https://github.com/.extraheader
+2026-10-27T18:41:13.9805151Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T18:41:13.9852660Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T18:41:14.0130761Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T18:41:14.0180445Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T18:41:14.0628398Z Cleaning up orphan processes
+2026-10-27T18:41:14.1004207Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

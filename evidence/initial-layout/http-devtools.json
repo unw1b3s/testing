@@ -1,0 +1,114 @@
+[
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "documentURL": "http://127.0.0.1:8000/",
+      "frameId": "52882700AFE3F7F07C45F0E62A3390BD",
+      "hasUserGesture": true,
+      "initiator": {
+        "stack": {
+          "callFrames": [
+            {
+              "columnNumber": 25,
+              "functionName": "api",
+              "lineNumber": 3,
+              "scriptId": "4",
+              "url": "http://127.0.0.1:8000/app.js"
+            },
+            {
+              "columnNumber": 49,
+              "functionName": "showTasks",
+              "lineNumber": 32,
+              "scriptId": "4",
+              "url": "http://127.0.0.1:8000/app.js"
+            }
+          ]
+        },
+        "type": "script"
+      },
+      "loaderId": "B894553AFAE5AA7132F2F05C515F3AE0",
+      "redirectHasExtraInfo": false,
+      "request": {
+        "headers": {
+          "Referer": "http://127.0.0.1:8000/",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"Google Chrome\";v=\"156\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"macOS\""
+        },
+        "initialPriority": "High",
+        "isSameSite": true,
+        "method": "GET",
+        "mixedContentType": "none",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "url": "http://127.0.0.1:8000/api/health"
+      },
+      "requestId": "67122.11",
+      "timestamp": 115847.269337,
+      "type": "Fetch",
+      "wallTime": 1793125653.264166
+    }
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "frameId": "52882700AFE3F7F07C45F0E62A3390BD",
+      "hasExtraInfo": true,
+      "loaderId": "B894553AFAE5AA7132F2F05C515F3AE0",
+      "requestId": "67122.11",
+      "response": {
+        "alternateProtocolUsage": "unspecifiedReason",
+        "charset": "utf-8",
+        "connectionId": 152,
+        "connectionReused": false,
+        "encodedDataLength": 184,
+        "fromDiskCache": false,
+        "fromPrefetchCache": false,
+        "fromServiceWorker": false,
+        "headers": {
+          "Cache-Control": "no-store",
+          "Content-Length": "60",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Tue, 27 Oct 2026 18:27:33 GMT",
+          "Server": "BaseHTTP/0.6 Python/3.14.7"
+        },
+        "mimeType": "application/json",
+        "protocol": "http/1.0",
+        "remoteIPAddress": "127.0.0.1",
+        "remotePort": 8000,
+        "responseTime": 1793125653265.398,
+        "securityState": "secure",
+        "status": 200,
+        "statusText": "OK",
+        "timing": {
+          "connectEnd": 0.449,
+          "connectStart": 0.064,
+          "dnsEnd": 0.064,
+          "dnsStart": 0.059,
+          "proxyEnd": -1,
+          "proxyStart": -1,
+          "pushEnd": 0,
+          "pushStart": 0,
+          "receiveHeadersEnd": 1.131,
+          "receiveHeadersStart": 1.116,
+          "requestTime": 115847.269467,
+          "sendEnd": 0.499,
+          "sendStart": 0.478,
+          "sslEnd": -1,
+          "sslStart": -1,
+          "workerFetchStart": -1,
+          "workerReady": -1,
+          "workerRespondWithSettled": -1,
+          "workerStart": -1
+        },
+        "url": "http://127.0.0.1:8000/api/health"
+      },
+      "timestamp": 115847.270723,
+      "type": "Fetch"
+    },
+    "body": {
+      "base64Encoded": false,
+      "body": "{\"status\": \"ok\", \"message\": \"Сервис доступен\"}"
+    }
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "time": "2026-10-27T18:29:42.783767+00:00",
+  "browser": "156.0.8078.48",
+  "viewport": [
+    {
+      "document": 320,
+      "height": 568,
+      "width": 320,
+      "pass": true
+    },
+    {
+      "document": 375,
+      "height": 812,
+      "width": 375,
+      "pass": true
+    },
+    {
+      "document": 768,
+      "height": 1024,
+      "width": 768,
+      "pass": true
+    },
+    {
+      "document": 1265,
+      "height": 720,
+      "width": 1280,
+      "pass": true
+    },
+    {
+      "document": 1920,
+      "height": 1080,
+      "width": 1920,
+      "pass": true
+    }
+  ],
+  "after_reload": [
+    "Подготовить практическую работу",
+    "ЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯ"
+  ],
+  "cache": {
+    "cacheControl": "no-store",
+    "status": 200
+  }
+}

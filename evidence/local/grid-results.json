@@ -1,0 +1,12 @@
+[
+  {
+    "client": 1,
+    "session": "4fa90c8aabdd39f5047ef4be49901ccb",
+    "result": "PASS"
+  },
+  {
+    "client": 2,
+    "session": "e274b3c04794ee277c26676c7aa1f21d",
+    "result": "PASS"
+  }
+]

@@ -1,0 +1,40 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.7, pytest-9.1.1, pluggy-1.7.0 -- /Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 29 items
+
+tests/test_api.py::test_protected_api PASSED                             [  3%]
+tests/test_api.py::test_api_title_boundaries[0-400] PASSED               [  6%]
+tests/test_api.py::test_api_title_boundaries[1-201] PASSED               [ 10%]
+tests/test_api.py::test_api_title_boundaries[79-201] PASSED              [ 13%]
+tests/test_api.py::test_api_title_boundaries[80-201] PASSED              [ 17%]
+tests/test_api.py::test_api_title_boundaries[81-400] PASSED              [ 20%]
+tests/test_api.py::test_sessions_are_isolated PASSED                     [ 24%]
+tests/test_layout.py::test_long_title_layout[320-568] PASSED             [ 27%]
+tests/test_layout.py::test_long_title_layout[375-812] PASSED             [ 31%]
+tests/test_layout.py::test_long_title_layout[768-1024] PASSED            [ 34%]
+tests/test_layout.py::test_long_title_layout[1280-720] PASSED            [ 37%]
+tests/test_layout.py::test_long_title_layout[1920-1080] PASSED           [ 41%]
+tests/test_regression.py::test_wrong_credentials[other@example.com-Study123!] PASSED [ 44%]
+tests/test_regression.py::test_wrong_credentials[student@example.com-Wrong123!] PASSED [ 48%]
+tests/test_regression.py::test_login_validation[-Study123!-email-valueMissing] PASSED [ 51%]
+tests/test_regression.py::test_login_validation[student@example.com--password-valueMissing] PASSED [ 55%]
+tests/test_regression.py::test_login_validation[not-email-Study123!-email-typeMismatch] PASSED [ 58%]
+tests/test_regression.py::test_login_validation[student@example.com-1234567-password-tooShort] PASSED [ 62%]
+tests/test_regression.py::test_title_boundaries[1] PASSED                [ 65%]
+tests/test_regression.py::test_title_boundaries[79] PASSED               [ 68%]
+tests/test_regression.py::test_title_boundaries[80] PASSED               [ 72%]
+tests/test_regression.py::test_spaces_title PASSED                       [ 75%]
+tests/test_regression.py::test_text_is_not_html PASSED                   [ 79%]
+tests/test_regression.py::test_frame_and_new_window PASSED               [ 82%]
+tests/test_smoke.py::test_open_login PASSED                              [ 86%]
+tests/test_smoke.py::test_login_and_logout PASSED                        [ 89%]
+tests/test_smoke.py::test_create_task PASSED                             [ 93%]
+tests/test_smoke.py::test_complete_and_delete PASSED                     [ 96%]
+tests/test_smoke.py::test_navigation PASSED                              [100%]
+
+- generated xml file: /Users/levvolkov/Documents/ChatGPT/МДК 04.01/testing/evidence/local/pytest.xml -
+============================= 29 passed in 21.18s ==============================

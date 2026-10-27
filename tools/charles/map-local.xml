@@ -1,0 +1,3 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<?charles serialisation-version='2.0' ?>
+<charles-export><toolConfiguration><configs><entry><string>Map Local</string><mapLocal><toolEnabled>true</toolEnabled><mappings><mapLocalMapping><sourceLocation><protocol>http</protocol><host>127.0.0.1</host><port>8000</port><path>/api/health</path></sourceLocation><dest>HEALTH_FILE_PATH</dest><enabled>true</enabled><caseSensitive>true</caseSensitive></mapLocalMapping></mappings></mapLocal></entry></configs></toolConfiguration></charles-export>
