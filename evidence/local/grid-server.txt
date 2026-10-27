@@ -38,3 +38,4 @@
 21:38:51.910 INFO [SessionSlot.stop] - Session stopped successfully: e274b3c04794ee277c26676c7aa1f21d
 21:38:51.911 INFO [LocalSessionMap.removeWithReason] - Deleted session from local Session Map, Id: e274b3c04794ee277c26676c7aa1f21d, Node: http://127.0.0.1:4444, Reason: session closed normally (QUIT command)
 21:38:51.912 INFO [LocalGridModel.release] - Releasing slot for session id e274b3c04794ee277c26676c7aa1f21d
+21:56:46.494 INFO [LocalNode.stopAllSessions] - Trying to stop all running sessions before shutting down...
