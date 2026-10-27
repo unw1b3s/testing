@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Учебный планировщик</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><header><strong>Учебный планировщик</strong><nav><a href="/about" id="about-link">О приложении</a></nav></header><main>
+<section id="login-panel"><h1>Вход</h1><p>Учебная учётная запись: student@example.com / Study123!</p>
+<form id="login-form"><label for="email">Почта</label><input id="email" name="email" type="email" required autocomplete="username"><label for="password">Пароль</label><input id="password" name="password" type="password" minlength="8" maxlength="64" required autocomplete="current-password"><button type="submit" id="login-button">Войти</button></form><p id="login-error" role="alert"></p></section>
+<section id="tasks-panel" hidden><div class="heading"><h1>Мои задачи</h1><button id="logout" type="button">Выйти</button></div>
+<form id="task-form"><label for="title">Задача (1–80 символов)</label><input id="title" name="title" required maxlength="80"><label for="priority">Приоритет</label><select id="priority"><option>Обычный</option><option>Высокий</option></select><button id="add-task" type="submit">Добавить</button></form><p id="task-error" role="alert"></p>
+<fieldset><legend>Показать</legend><label><input type="radio" name="filter" value="all" checked> Все</label><label><input type="radio" name="filter" value="open"> Незавершённые</label></fieldset><ul id="tasks"></ul><p id="empty">Задач пока нет</p><p id="service-status" role="status"></p></section>
+</main><footer>Практика по тестированию информационных систем</footer></body></html>

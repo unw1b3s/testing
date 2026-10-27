@@ -1,0 +1,1 @@
+{"name":"testing-practice","private":true,"type":"module","scripts":{"test:puppeteer":"node tests/puppeteer/login.mjs"},"devDependencies":{"puppeteer-core":"25.16.0"}}
